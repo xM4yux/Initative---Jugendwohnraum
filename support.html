@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unterstützen – Jugendwohnraum‑Initiative</title>
+    <!-- Schriften für elegantes Design -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Farbpalette analog zur Hauptseite */
+            --primary-color: #005f73;
+            --accent-color: #e29578;
+            --light-bg: #fefae0;
+            --alt-bg: #edf6f9;
+            --text-color: #023047;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        h1, h2, .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Kopfzeile */
+        header {
+            background: var(--light-bg);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Inhalt */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        form {
+            background-color: var(--alt-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 0.8rem;
+            resize: vertical;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .submit-btn {
+            margin-top: 1rem;
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 0.7rem 1.6rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: var(--primary-color);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">Jugendwohnraum</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#problem">Problem</a></li>
+                    <li><a href="index.html#solution">Lösung</a></li>
+                    <li><a href="index.html#goals">Ziele</a></li>
+                    <li><a href="index.html#support">Unterstützen</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <h1>Unterstützen</h1>
+        <p>Schreibe hier kurz, warum du die Jugendwohnraum‑Initiative unterstützen möchtest. Nach dem Absenden wird dein Grund in einer neuen E‑Mail vorbereitet.</p>
+        <form id="supportForm" onsubmit="submitForm(event)">
+            <textarea id="reason" name="reason" placeholder="Dein Grund …"></textarea>
+            <button class="submit-btn" type="submit">Grund senden</button>
+        </form>
+        <a class="back-link" href="index.html">&larr; Zurück zur Startseite</a>
+    </main>
+
+    <script>
+        // Ersetzt YOUR_EMAIL@example.com durch die tatsächliche Empfängeradresse.
+        const recipientEmail = "YOUR_EMAIL@example.com";
+
+        function submitForm(event) {
+            event.preventDefault();
+            const message = document.getElementById('reason').value.trim();
+            if (!message) {
+                alert('Bitte gib einen Grund ein.');
+                return;
+            }
+            const subject = encodeURIComponent('Unterstützung für die Jugendwohnraum‑Initiative');
+            const body = encodeURIComponent(message);
+            // Öffnet den Mail‑Client mit vorbefülltem Empfänger, Betreff und Nachricht
+            window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+</html>
